@@ -1,10 +1,10 @@
+import pytest
+
 from src.qth_locator import location_to_square
 
 
 def test_location_to_square_positive():
     squares = [
-        (None, (0, 0)),
-        (None, (32, 26)),
         ("KM32jn", (32.541667, 26.75)),
         ("KM32jn", (32.570831, 26.750003)),
         ("KM72kk", (32.437487, 34.875015)),
@@ -15,17 +15,26 @@ def test_location_to_square_positive():
     ]
     for sq, loc in squares:
         qth = location_to_square(loc[0], loc[1])
-        # print(f'{loc}: {sq}, calculated: {qth}, match:{sq==qth}')
         assert sq == qth
 
         if qth:
             assert len(qth) == 6
 
 
+def test_location_to_square_assert():
+    squares = [
+        (None, (0, 0)),
+        (None, (32, 26)),
+    ]
+    for sq, loc in squares:
+        with pytest.raises(AssertionError) as excinfo:
+            location_to_square(loc[0], loc[1])
+            print("excinfo:", excinfo)
+        assert excinfo.type == AssertionError
+
+
 def test_location_to_square_negative():
     squares = [
-        ("None", (0, 0)),
-        ("None", (32, 26)),
         ("", (32.570831, 26.750003)),
         ("KM72kc", (32.437487, 34.875015)),
         ("JN45ff", (45.603333, 8.456667)),
@@ -34,5 +43,4 @@ def test_location_to_square_negative():
     ]
     for sq, loc in squares:
         qth = location_to_square(loc[0], loc[1])
-        # print(f'{loc}: {sq}, calculated: {qth}, match:{sq==qth}')
         assert sq != qth
