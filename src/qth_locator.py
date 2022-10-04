@@ -8,7 +8,7 @@ ASCII_a = 97
 
 def square_to_location(
     qth_locator: str,
-) -> AssertionError | tuple[float, float]:
+) -> tuple[float, float]:
     """
     Converts QTH locator to latitude and longitude in decimal format.
     Gets QTH locator as string.
@@ -16,11 +16,8 @@ def square_to_location(
     """
 
     # Validate input
-    try:
-        assert isinstance(qth_locator, str)
-        assert len(qth_locator) == 6
-    except AssertionError as e:
-        raise e
+    assert isinstance(qth_locator, str)
+    assert len(qth_locator) == 6
 
     qth_locator = qth_locator.upper()
 
@@ -57,7 +54,7 @@ def square_to_location(
     return lat, lon
 
 
-def location_to_square(lat: float, lon: float) -> AssertionError | str:
+def location_to_square(lat: float, lon: float) -> str:
     """
     Converts latitude and longitude in decimal format to QTH locator.
     Gets latitude and longitude as floats.
@@ -65,13 +62,10 @@ def location_to_square(lat: float, lon: float) -> AssertionError | str:
     """
 
     # Validate input
-    try:
-        assert isinstance(lat, float)
-        assert isinstance(lon, float)
-        assert -90.0 <= lat <= 90.0
-        assert -180.0 <= lon <= 180.0
-    except AssertionError as e:
-        raise e
+    assert isinstance(lat, float)
+    assert isinstance(lon, float)
+    assert -90.0 <= lat <= 90.0
+    assert -180.0 <= lon <= 180.0
 
     # Separate fields, squares and subsquares
     lon += 180
