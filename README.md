@@ -1,3 +1,10 @@
+[![Test Python package](https://github.com/Pytlicek/hamradio_functions/actions/workflows/python-app.yml/badge.svg?branch=main)](https://github.com/Pytlicek/hamradio_functions/actions/workflows/python-app.yml) 
+![PythonVersions](https://img.shields.io/badge/python-3.10-blue) 
+[![Sourcery](https://img.shields.io/badge/Sourcery-enabled-brightgreen)](https://sourcery.ai) 
+[![Black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black) 
+[![Twitter Follow](https://img.shields.io/twitter/follow/Pytlicek?color=1DA1F2&logo=twitter&style=flat)](https://twitter.com/Pytlicek) 
+
+
 # QTH Locator Functions
 Python functions for converting decimal coordinates to QTH locator and backwards.
 
